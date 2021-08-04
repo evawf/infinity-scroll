@@ -33,5 +33,5 @@ async function getPhotos(req, res) {
 // Fetch Unsplash API Data
 const getUnsplashPhotos = async () => {
     const baseURL = "https://api.unsplash.com";
-    const subURL = ""
+    const subURL = "/photos/random/?client_id=${apiKey}&count=${count}"
 }
