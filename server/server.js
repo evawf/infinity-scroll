@@ -3,12 +3,14 @@ if (process.env.Node_ENV !== "production") {
 }
 
 const Unsplash_apiKey = process.env.UNSPLASH_API_KEY;
+const count = 2;
 
 const path = require('path');
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const fetch = require("node-fetch");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,13 +27,25 @@ app.get('/', function(req, res) {
     res.sendFile('dist/index.html', { root: __dirname });
 })
 
+let photosArray = [];
 app.post('/', getPhotos);
 async function getPhotos(req, res) {
-    const photos = req.body.photos;
+    let photosArray = await getUnsplashPhotos();
+    console.log(photosArray);
+    res.send(photosArray);
 }
 
 // Fetch Unsplash API Data
 const getUnsplashPhotos = async () => {
     const baseURL = "https://api.unsplash.com";
-    const subURL = "/photos/random/?client_id=${apiKey}&count=${count}"
+    const subURL = "/photos/random/?client_id=" + Unsplash_apiKey + "&count=" + count;
+    const url = baseURL + subURL;
+    const res = await fetch(url) 
+    try{
+        const Data = await res.json();
+        return Data;
+    }
+    catch(error){
+        console.log('error', error);
+    }
 }
