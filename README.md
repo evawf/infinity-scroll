@@ -1,12 +1,8 @@
-# Project Name
+# Infinity Scroll
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
+Clone this repo and run 
 
 ## Usage
 
