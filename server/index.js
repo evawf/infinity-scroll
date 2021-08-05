@@ -11,11 +11,12 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fetch = require("node-fetch");
+// const { response } = require('express');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use(express.static('dist'));
+app.use(express.static('client'));
 app.use(bodyParser.json());
 
 const port = 8081;
