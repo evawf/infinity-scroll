@@ -2,6 +2,7 @@ console.log('coucou!');
 const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
 
+
 const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
         method: 'POST',
@@ -14,24 +15,20 @@ const postData = async (url = '', data = {}) => {
     });
     try {
         const newData = await response.json();
-        console.log(newData);
         return newData;
     } catch(error) {
         console.log('error', error);
     }
 }
 
-async function getPhotos() {
-    const photosArray = await postData('http://localhose:8081/');
-    console.log(photosArray);
-}
-
 // Create Elements For Links & Photos, Add to DOM
-function displayPhotos() {
+const displayPhotos = (photosArray) => {
+    console.log(photosArray);
+
     // Run function for each object in photoArray
     photosArray.forEach((photo) => {
         // Create <a> to link to Unsplash
-        const item = docuemnt.createElement('a');
+        const item = document.createElement('a');
         item.setAttribute('href', photo.links.html);
         item.setAttribute('target', '_blank');
         // Create <img> for photo
@@ -42,24 +39,18 @@ function displayPhotos() {
         // Put <img> inside <a>, then put both inside imageContainer Element
         item.appendChild(img);
         imageContainer.appendChild(item);
-    });
+    })
 }
 
-// // Unsplash API
-// const count = 10;
-// const apiKey = 'API_KEY';
-// const apiUrl = 'https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}';
-
-// // Get Photos from Unsplash API
-// async function getPhotos() {
-//     try {
-//         const response = await fetch(apiUrl);
-//         photosArray = await response.json();
-//         displayPhotos();
-//     } catch (error) {
-//         //Catch Error Here
-//     }
-// }
+// Get Photos from Unsplash API
+async function getPhotos() {
+    try {
+        const photosArray = await postData('http://localhost:8081/');
+        displayPhotos(photosArray);
+    } catch (error) {
+        console.log('error', error);
+    }
+}
 
 // On Load
 getPhotos();

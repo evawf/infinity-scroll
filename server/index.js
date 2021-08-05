@@ -3,7 +3,7 @@ if (process.env.Node_ENV !== "production") {
 }
 
 const Unsplash_apiKey = process.env.UNSPLASH_API_KEY;
-const count = 2;
+const count = 10;
 
 const path = require('path');
 const express = require('express');
