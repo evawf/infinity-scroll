@@ -3,7 +3,7 @@ Added Backend code to call API with your apiKey.
 
 ## Installation
 
-1. Clone this repo and run 
+1. Clone this repo and install dependencies 
 ```
 npm install
 ```
