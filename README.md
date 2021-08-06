@@ -1,28 +1,21 @@
 # Infinity Scroll
+Added Backend code to call API with your apiKey. 
 
 ## Installation
 
-Clone this repo and run 
-
-## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+1. Clone this repo and run 
+```
+npm install
+```
+2. Create an account and application with Unsplash
+3. Input your apiKey in .env file
+4. Run npm at your terminal
+```
+npm run start
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+## Usage
+Infinite scroll function to load more photos from unsplash while scrolling down. 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
